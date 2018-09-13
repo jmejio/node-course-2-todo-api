@@ -21,6 +21,16 @@ app.post('/todos', (req, res) => {
     });
 });
 
+//== starts get section
+
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({todos});
+    }, (e) => {
+        res.status(400).send(e);
+    })
+});
+// --- end app
 
 app.listen(3000, () => {
     console.log('started on port 3000');
